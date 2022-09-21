@@ -1,0 +1,30 @@
+// Functions
+
+@use './maps' as *;
+
+// Lighten or darken colors
+@function color($color, $effect: 'none', $amount: 0) {
+    @if ($effect == 'lighten') {
+        $result: lighten(map-get($colors, $color), $amount);
+        @return $result;
+    }
+    @else if ($effect == 'darken') {
+        $result: darken(map-get($colors, $color), $amount);
+        @return $result;
+    }
+    @else {
+        @return #{var(--#{$color})};
+    }
+}
+
+
+@function prop($variable, $fallback: 0) {
+    @if ($fallback == 0) {
+        @return #{var(--#{$variable})};
+    } 
+
+    @else {
+        @return #{var(--#{$variable}, #{$fallback}px)};
+    }
+}
+

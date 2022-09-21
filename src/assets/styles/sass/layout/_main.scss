@@ -1,0 +1,171 @@
+// Main
+
+@use 'abstracts' as *;
+@use 'sass:math';
+
+.about {
+    background-color: color(light, darken, 1);
+    color: color(primary);
+    text-align: center;
+    padding: $padding * 2;
+
+    h2 {
+        @include section-heading('accent-one');
+    }
+
+    .media {
+        padding-bottom: $padding * 3;
+
+        img {
+            width: 45%;
+            height: auto;
+            border: $border-width * 2 $border-style color(primary, 'lighten', 60);
+            border-radius: 50%;
+        }
+
+        .media-content {
+            h3 {
+                font: {
+                    size: $font-size * 1.3;
+                    weight: $font-semibold;
+                }
+                margin: $margin 0;
+            }
+                 
+            p {
+                font-size: $font-size * 1;
+                text-align: justify;
+            }
+        }
+
+        @include respond-to('md', min) {
+            img {
+                width: 35%;
+            }
+        }
+
+
+
+        @include respond-to('lg', min) {
+            @include container(1080px);
+            @include flex(row, space-between, center);
+            padding-bottom: $padding * 5;
+
+            img {
+                width: 25%;
+            }
+
+            .media-content {
+                padding: 0 2em;
+            }
+        }
+    }
+}
+
+.services {
+    background-color: color(primary, darken, 17);
+    color: color(light);
+    padding: $padding * 2;
+
+    h2 {
+        @include section-heading('light');
+    }
+}
+
+.card-group {
+    @include flex(column);
+    gap: 3em;
+
+    .card {
+        @include container(1080px);
+        @include flex(column, center, center);
+        width: 100%;
+        min-height: 20em;
+        padding: $padding $padding *3;
+        border-radius: $border-radius * 2;
+        background-color: color(primary, darken, 15);
+        
+        i, svg {
+            height: 2em;
+            padding: $padding * 4 $padding * 2;
+        }
+
+        .card-title {
+            font: {
+                size: $font-size * 1.3;
+                weight: $font-semibold;
+            }
+            color: color(accent-one, lighten, 10);
+            margin-bottom: $margin;
+            text-align: justify;
+        }
+
+        .card-body {
+            font-size: 1em;
+            line-height: $line-height;
+            margin-bottom: $margin;
+            text-align: justify;
+        }
+    }
+
+
+    @include respond-to ('md', 'min') {
+        @include flex(row, space-between, flex-start);
+        flex-wrap: wrap;
+        align-content: space-between;
+        gap: 3em;
+
+        .card {
+            min-height: 25em;
+            width: 45%;
+        }
+    }
+
+    @include respond-to ('lg', 'min') {
+        @include flex(row, space-between, flex-start);
+        gap: 0;
+
+        .card {
+            min-height: 25em;
+            width: 30%;
+        }
+    }
+}
+
+
+.contact {
+    @include flex($direction: column, $main: center, $cross: center);
+    gap: 1em;
+    background-color: color(primary, lighten, 60);
+    padding: $padding * 5 0;
+    color: color(primary, darken, 15);
+    font-weight: $font-semibold;
+
+    h2 {
+        @include section-heading('primary');
+    }
+
+    .message {
+        @include flex(row, center, center);
+        gap: 1em;
+    }
+
+    a {
+        margin: 0;
+    }
+}
+
+
+.social {
+    @include flex(row, center, center);
+
+    i, svg {
+        height: 1.5em;
+        padding: $padding;
+        transition: .4s;
+
+        &:hover {
+            color: color(accent-one, 'darken', 10);
+        }
+    }
+}

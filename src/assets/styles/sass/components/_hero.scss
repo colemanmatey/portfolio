@@ -1,0 +1,41 @@
+// Hero
+
+@use 'abstracts' as *;
+@use 'sass:math';
+
+.hero {
+    padding: 0 $padding * 2;
+    height: 100vmin;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),  url('../img/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include flex(row, center, center);
+
+    .content {
+        color: color(light);
+        line-height: 1.5;
+
+        p {
+            margin: math.div($margin, 2) 0;
+
+            &:nth-child(1) {
+                font-size: $font-size * 1.5;
+                letter-spacing: 3px;
+            }
+
+            &:nth-child(2) {
+                font: {
+                    size: $font-size * 2;
+                    weight: $font-bold;
+                }
+            }
+
+            &:nth-child(3) {
+                font-size: $font-size * 1;
+                letter-spacing: 3px;
+            }
+        }
+    }
+}
+

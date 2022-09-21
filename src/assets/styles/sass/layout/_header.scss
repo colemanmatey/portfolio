@@ -1,0 +1,110 @@
+// Header
+
+@use 'abstracts' as *;
+@use 'sass:math';
+
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: color(primary);
+    padding: $padding $padding * 2;
+    border-bottom: $border-width * 3 $border-style color(primary, lighten, 60);
+
+    a {
+        color: color(light);
+        text-decoration: none;
+    }
+
+    .logo {
+        font: {
+            weight: $font-semibold;
+            size: $font-size * 1.875;
+        }
+
+        span {
+            &:nth-child(1) {
+                color: color(light);
+            }
+
+            &:nth-child(2) {
+                color: color(light, 'darken', 7);
+                margin-left: -0.2em;
+            }
+
+            &:nth-child(3) {
+                color: color(accent-one);
+                margin-left: -0.5em;
+            }
+
+            &:nth-child(4) {
+                color: color(accent-one);
+                margin-left: -0.3em;
+            }
+        }
+
+    }
+
+}
+
+
+.nav {
+    .nav-menu {
+        display: none;
+
+        @include respond-to ('lg', 'min') {
+            display: block;
+            @include flex(row, center, center);
+
+            li {
+                font-weight: $font-semibold;
+                margin: 0 math.div($margin, 2);
+            }
+            
+            a {
+                display: inline-block;
+                padding: math.div($padding, 2) $padding;
+
+                &:hover {
+                    color: color(accent-one);
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 67px;
+        left: 0;
+        background-color: color(primary);
+        text-align: center;
+        
+        li {
+            display: block;
+            transition: .2s;
+            border-bottom: $border-width $border-style color(primary, 'lighten', 10);
+
+            a {
+                display: inline-block;
+                width: 100%;
+                color: color(light);
+                padding: $padding;
+                font-weight: $font-semibold;
+            }
+
+            &:hover {
+                background-color: color(accent-one);
+            }
+
+            &:active {
+                background-color: color(light, 'darken', 7);
+
+                a {
+                    color: color(accent-one);
+                }
+            }
+        }
+    }
+}

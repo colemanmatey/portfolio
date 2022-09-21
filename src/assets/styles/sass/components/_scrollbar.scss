@@ -1,0 +1,19 @@
+// Scrollbar
+
+@use 'abstracts' as *;
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: color(accent-one);
+    border-radius: 50px;
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: #474747;
+}

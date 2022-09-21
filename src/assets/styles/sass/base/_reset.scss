@@ -1,0 +1,52 @@
+// Reset
+
+@use 'abstracts' as *;
+
+
+:root {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: prop(scroll-padding, 70);
+    @include custom-colors;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    @include box-reset;
+}
+
+
+body {
+    width: 100%;
+    font-size: $font-size;
+    font-family: $font-family;
+}
+
+main {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $font-normal;
+}
+
+fieldset {
+    border: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+img {
+    height: auto;
+    width: 100%;
+}

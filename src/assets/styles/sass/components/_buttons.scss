@@ -1,0 +1,92 @@
+// Buttons
+
+@use 'abstracts' as *;
+@use 'sass:math';
+
+
+.hamburger {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 30px;
+        height: 4px;
+        margin: 5px 0;
+        background-color: color(light);
+        border-radius: $border-radius;
+        transition: .4s;
+    }
+
+    &:hover {
+        span:nth-child(2) {
+        transform: translateX(10px);
+        background-color: color(accent-one);
+        }
+    }
+
+    &.is-active {
+        span {
+            height: 3px;
+
+            &:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+                width: 20px;
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+                width: 20px;
+            }
+        }
+
+        &:hover {
+            span {
+                background-color: color(accent-one);
+            }
+        }
+    }
+
+    @include respond-to ('lg', 'min') {
+        display: none;
+    }
+
+}
+
+
+.contact-btn {
+    display: none;
+
+    @include respond-to ('lg', 'min') {
+        display: block;
+        @include button;
+    
+        &:hover {
+            background-color: color(light);
+            color: color(accent-one);
+        }
+    }
+}
+
+
+.btn {
+    @include button;
+    display: inline-block;
+    margin-top: $margin * 2;
+    color: color(light);
+    text-decoration: none;
+    border: $border-width $border-style transparent;
+
+    &:hover {
+        background-color: color(light);
+        color: color(accent-one);
+        border: $border-width $border-style color(accent-one);
+    }
+
+}

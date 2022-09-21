@@ -1,0 +1,86 @@
+// Mixins
+
+@use './maps' as *;
+@use './globals' as *;
+@use './functions' as *;
+@use 'sass:math';
+
+
+// Set margin and padding to 0
+@mixin box-reset {
+    margin: 0;
+    padding: 0;
+}
+
+
+// Container
+@mixin container($size) {
+    max-width: $size;
+    margin: 0 auto;
+}
+
+
+// Flex
+@mixin flex($direction: row, $main: flex-start, $cross: flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $main;
+    align-items: $cross;
+
+}
+
+
+// Manage responsive breakpoints
+@mixin respond-to($breakpoint, $description) {
+
+    @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+
+        // Print a media query based on the $key
+        @if ($description == 'max') {
+            @media (max-width: map-get($breakpoints, $breakpoint)) {
+                @content;
+            }
+        }
+
+        @else if ($description == 'min') {
+            @media (min-width: map-get($breakpoints, $breakpoint)) {
+                @content;
+            }
+        }
+
+        @else {
+            @error "Unknown direction #{$description}.";
+        }
+    }
+}
+
+
+// Generate custom colors
+@mixin custom-colors {
+    @each $key, $val in $colors {
+        --#{$key}: #{map-get($colors, $key)};
+    }
+}
+
+
+// Button styles
+@mixin button {
+    font-weight: $font-semibold;
+    background-color: color(accent-one);
+    padding: math.div($padding, 1.5) $padding * 2;
+    border-radius: $border-radius * 5;
+    transition: .4s;
+}
+
+
+// Section heading
+@mixin section-heading ($color) {
+    font: {
+        size: $font-size * 2;
+        weight: $font-semibold;
+    }
+    color: color($color);
+    margin: $margin 0;
+    padding-bottom: $padding;
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+// Maps
+
+@use './globals' as *;
+
+
+// Breakpoints
+$breakpoints: (
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl':1400px
+);
+
+
+// Colors
+$colors: (
+    'primary': $prussian-blue,
+    'secondary': $honeydew,
+    'accent-one': $dark-orange,
+    'accent-two': $deep-pink,
+    'dark': $black,
+    'light': $white,
+);

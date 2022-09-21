@@ -1,0 +1,14 @@
+// Grid
+
+@use 'abstracts' as *;
+
+.container {
+    @include container(1080px);
+    @include flex(row-reverse, space-between, center);
+
+    @include respond-to ('lg', 'min') {
+        @include flex(row, space-between, center);
+    }
+}
+
+
