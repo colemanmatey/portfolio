@@ -244,5 +244,6 @@ function primer(cb) {
 // Exports
 exports.clean = clean;
 exports.build = build;
+exports.monitor = monitor;
 exports.launch = launch;
 exports.default = primer;
