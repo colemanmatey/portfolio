@@ -92,12 +92,6 @@ function buildStyles() {
     // Compile all Sass files
     let compileSass = src(paths.scss, {sourcemaps: true})
         .pipe(sass().on('error', sass.logError))
-        .pipe(purgecss({
-            content: [paths.html],
-            safelist: {
-                deep: safelist
-            },
-        }))
         .pipe(dest(paths.dev_css, {sourcemaps: '.'}));
 
     let minifySass = src(paths.scss, {sourcemaps: true})
