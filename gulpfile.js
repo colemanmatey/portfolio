@@ -6,6 +6,7 @@
 const { src, dest, watch, series, parallel } = require('gulp');
 const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync').create();
+const combineSelectors = require('postcss-combine-duplicated-selectors');
 const concat = require('gulp-concat');
 const cssnano = require('cssnano');
 const fs = require('fs');
@@ -80,7 +81,7 @@ function handleHTML() {
 function buildStyles() {
     
     // Prepare plugin list for postcss module
-    let plugins = [ autoprefixer(), cssnano() ];
+    let plugins = [ autoprefixer(), cssnano(), combineSelectors({removeDuplicatedProperties: true}) ];
 
     // Safelist for PurgeCSS
     let safelist = [
@@ -92,6 +93,7 @@ function buildStyles() {
     // Compile all Sass files
     let compileSass = src(paths.scss, {sourcemaps: true})
         .pipe(sass().on('error', sass.logError))
+        .pipe(postcss([combineSelectors({removeDuplicatedProperties: true})]))
         .pipe(dest(paths.dev_css, {sourcemaps: '.'}));
 
     let minifySass = src(paths.scss, {sourcemaps: true})
