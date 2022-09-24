@@ -81,7 +81,13 @@ function handleHTML() {
 function buildStyles() {
     
     // Prepare plugin list for postcss module
-    let plugins = [ autoprefixer(), cssnano(), combineSelectors({removeDuplicatedProperties: true}) ];
+    let plugins = [
+        autoprefixer(), 
+        cssnano(), 
+        combineSelectors({
+            removeDuplicatedProperties: true
+        }) 
+    ];
 
     // Safelist for PurgeCSS
     let safelist = [
@@ -93,7 +99,10 @@ function buildStyles() {
     // Compile all Sass files
     let compileSass = src(paths.scss, {sourcemaps: true})
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([combineSelectors({removeDuplicatedProperties: true})]))
+        .pipe(postcss([
+            autoprefixer(), 
+            combineSelectors({removeDuplicatedProperties: true})
+        ]))
         .pipe(dest(paths.dev_css, {sourcemaps: '.'}));
 
     let minifySass = src(paths.scss, {sourcemaps: true})
